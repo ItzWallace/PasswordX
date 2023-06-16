@@ -17,6 +17,13 @@ namespace PasswordX
                 {
                     GeneratePassword();
                 }
+                
+                if (choice == 2)
+                {
+                    CheckPassword();
+                }
+                
+               
             }
 
 
@@ -29,7 +36,7 @@ namespace PasswordX
             int length = Convert.ToInt32(Console.ReadLine());
             
             //Creates a string of characters to choose from
-            string strings = "abcdefghijklmnopqrstuvwxyz" + "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + "1234567890" + "!@#$%^&*()";
+            string strings = "abcdefghijklmnopqrstuvwxyz" + "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + "1234567890" + "!$%^&*()-_=+";
             //Creates a random object
             Random random = new Random();
             //Creates an array to store the password
@@ -50,7 +57,27 @@ namespace PasswordX
         {
             Console.WriteLine("Enter the password you want to check:");
             string password = Console.ReadLine();
+            int score = 0;
             
+            if (password.Length >= 8)
+            {
+                score++;
+            }
+            if (password.Length >= 15)
+            {
+                score++;
+            }
+            if (password.Length <= 7)
+            {
+                score--;
+            }
+            if (password.Length <= 16)
+            {
+                score--;
+            }
+                
+            Console.WriteLine("Your password score is: " + score);
+                
             
             
             Console.ReadKey();
